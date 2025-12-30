@@ -1,0 +1,26 @@
+{
+  "name": "expo-eccomerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+     "build": "npm install --prefix backend && npm install --prefix admin && npm run build --prefix admin",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cnator5/expo-excommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Cnator5/expo-excommerce/issues"
+  },
+  "homepage": "https://github.com/Cnator5/expo-excommerce#readme",
+  "dependencies": {
+    "build": "^0.1.4",
+    "run": "^1.5.0"
+  }
+}
