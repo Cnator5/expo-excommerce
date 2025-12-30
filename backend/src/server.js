@@ -1,6 +1,9 @@
 import express from "express";
 import path from "path"
+import { clerkMiddleware } from '@clerk/express'
+
 import { ENV } from "./config/env.js";
+import { connectDB } from "./config/db.js";
 
 const app = express();
 
@@ -8,6 +11,8 @@ const app = express();
 app.use(express.json());
 
 const __dirname = path.resolve()
+
+app.use(clerkMiddleware())
 
 
 // Health check route
@@ -24,7 +29,11 @@ if (ENV.NODE_ENV === "production") {
   });
 }
 
-// Start server
-app.listen(ENV.PORT, () => {
-  console.log("Server is running");
-});
+const startServer = async () => {
+  await connectDB();
+  app.listen(ENV.PORT, () => {
+    console.log("Server is up and running");
+  });
+};
+
+startServer();
