@@ -8,6 +8,8 @@ import { functions, inngest } from "./config/inngest.js";
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
 
+import adminRoute from "./routes/admin.route.js";
+
 const app = express();
 
 // Middleware
@@ -19,6 +21,7 @@ const __dirname = path.resolve()
 
 app.use(clerkMiddleware())
 
+app.use("/api/admin", adminRoute);
 
 // Health check route
 app.get("/api/health", (req, res) => {
