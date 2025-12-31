@@ -9,6 +9,7 @@ import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
 
 import adminRoute from "./routes/admin.route.js";
+import userRoutes from "./routes/user.route.js";
 
 const app = express();
 
@@ -22,6 +23,7 @@ const __dirname = path.resolve()
 app.use(clerkMiddleware())
 
 app.use("/api/admin", adminRoute);
+app.use("/api/users", userRoutes);
 
 // Health check route
 app.get("/api/health", (req, res) => {
