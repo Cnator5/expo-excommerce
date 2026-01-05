@@ -48,3 +48,45 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## step by step: Step 1
+read stack navigator expo (Stack)
+
+## NativeWind for styling
+npm install nativewind react-native-reanimated@~3.17.4 react-native-safe-area-context@5.4.0
+npm install --dev tailwindcss@^3.4.17 prettier-plugin-tailwindcss@^0.5.11
+
+get the tailwind.config.js file and edit "./app/**/*.{js,jsx,ts,tsx}"
+
+## next
+global.css
+
+##
+metro.config.js
+
+## 
+ nativewind-env.d.ts
+
+## Step 2
+Tanstack for data fetching specifically react-query
+
+## npm i @tanstack/react-query
+
+## Step 3 Clerk
+clerk expo
+Expo Quickstart
+## npm install @clerk/clerk-expo
+
+wrap the apllication with ClerkProvider 
+
+## npm install expo-secure-store
+
+## Step 4: Create the auth page
+
+## Step 5: Create hook folder
+useSocialAuth.js
+
+## Step 6: Tab navigator
+tab navigator expo
+
+npm install expo-blur --legacy-peer-deps
