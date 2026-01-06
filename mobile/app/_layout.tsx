@@ -11,6 +11,8 @@ import {
 import { ClerkProvider } from '@clerk/clerk-expo'
 import { tokenCache } from '@clerk/clerk-expo/token-cache'
 
+import { StripeProvider } from "@stripe/stripe-react-native";
+
 Sentry.init({
   dsn: 'https://3eb4173b6d125e7055a4832a1d72415d@o4510635372642304.ingest.de.sentry.io/4510654706286672',
 
@@ -66,12 +68,13 @@ const queryClient = new QueryClient({
 
 
 export default Sentry.wrap(function RootLayout() {
-  return(
-     <ClerkProvider tokenCache={tokenCache}>
-     <QueryClientProvider client={queryClient}>
-       <Stack screenOptions={{ headerShown: false}} />
-     </QueryClientProvider>
-     </ClerkProvider>
-    
-  ) 
+  return (
+    <ClerkProvider tokenCache={tokenCache}>
+      <QueryClientProvider client={queryClient}>
+        <StripeProvider publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}>
+          <Stack screenOptions={{ headerShown: false }} />
+        </StripeProvider>
+      </QueryClientProvider>
+    </ClerkProvider>
+  );
 });
