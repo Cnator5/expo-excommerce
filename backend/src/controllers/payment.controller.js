@@ -73,7 +73,7 @@ export async function createPaymentIntent(req, res) {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(total * 100), // convert to cents
     //   currency: "usd",
-      currency: "xaf",
+      currency: "usd",
       customer: customer.id,
       automatic_payment_methods: {
         enabled: true,
