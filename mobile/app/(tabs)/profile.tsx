@@ -19,7 +19,7 @@ const ProfileScreen = () => {
 
   const handleMenuPress = (action: (typeof MENU_ITEMS)[number]["action"]) => {
     if (action === "/profile") return;
-    // router.push(action);
+    router.push(action);
   };
 
   return (
