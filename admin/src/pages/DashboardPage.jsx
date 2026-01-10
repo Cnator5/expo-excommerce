@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { orderApi, statsApi } from "../lib/api";
+import { categoryApi, orderApi, statsApi } from "../lib/api";
 import { DollarSignIcon, PackageIcon, ShoppingBagIcon, UsersIcon } from "lucide-react";
 import { capitalizeText, formatDate, getOrderStatusBadge } from "../lib/utils";
 
@@ -13,6 +13,11 @@ function DashboardPage() {
     queryKey: ["dashboardStats"],
     queryFn: statsApi.getDashboard,
   });
+
+  const { data: categoriesData, isLoading: isCatLoading } = useQuery({
+  queryKey: ['categories'],
+  queryFn: categoryApi.getAll
+});
 
   // it would be better to send the last 5 items from the api, instead of slicing it here
   // but we're just keeping it simple here...
@@ -39,6 +44,12 @@ function DashboardPage() {
       value: statsLoading ? "..." : statsData?.totalProducts || 0,
       icon: <PackageIcon className="size-8" />,
     },
+    {
+    name: "Total Categories",
+    // Use 'isCatLoading' here
+    value: isCatLoading ? "..." : categoriesData?.data?.length || 0,
+    icon: <PackageIcon className="size-8" />,
+  },
   ];
 
   return (

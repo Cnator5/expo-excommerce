@@ -4,9 +4,17 @@ import useProducts from "@/hooks/useProducts";
 
 import { Ionicons } from "@expo/vector-icons";
 import { useMemo, useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity, TextInput, Image, Button } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+  Image,
+  Button,
+} from "react-native";
 
-import * as Sentry from '@sentry/react-native';
+import * as Sentry from "@sentry/react-native";
 
 const CATEGORIES = [
   { name: "All", icon: "grid-outline" as const },
@@ -29,7 +37,9 @@ const ShopScreen = () => {
 
     // filtering by category
     if (selectedCategory !== "All") {
-      filtered = filtered.filter((product) => product.category === selectedCategory);
+      filtered = filtered.filter(
+        (product) => product.category === selectedCategory
+      );
     }
 
     // filtering by searh query
@@ -53,11 +63,18 @@ const ShopScreen = () => {
         <View className="px-6 pb-4 pt-6">
           <View className="flex-row items-center justify-between mb-6">
             <View>
-              <Text className="text-text-primary text-3xl font-bold tracking-tight">Shop</Text>
-              <Text className="text-text-secondary text-sm mt-1">Browse all products</Text>
+              <Text className="text-text-primary text-3xl font-bold tracking-tight">
+                Shop
+              </Text>
+              <Text className="text-text-secondary text-sm mt-1">
+                Browse all products
+              </Text>
             </View>
 
-            <TouchableOpacity className="bg-surface/50 p-3 rounded-full" activeOpacity={0.7}>
+            <TouchableOpacity
+              className="bg-surface/50 p-3 rounded-full"
+              activeOpacity={0.7}
+            >
               <Ionicons name="options-outline" size={22} color={"#fff"} />
             </TouchableOpacity>
           </View>
@@ -88,7 +105,9 @@ const ShopScreen = () => {
                 <TouchableOpacity
                   key={category.name}
                   onPress={() => setSelectedCategory(category.name)}
-                  className={`mr-3 rounded-2xl size-20 overflow-hidden items-center justify-center ${isSelected ? "bg-primary" : "bg-surface"}`}
+                  className={`mr-3 rounded-2xl size-20 overflow-hidden items-center justify-center ${
+                    isSelected ? "bg-primary" : "bg-surface"
+                  }`}
                 >
                   {category.icon ? (
                     <Ionicons
@@ -97,24 +116,42 @@ const ShopScreen = () => {
                       color={isSelected ? "#121212" : "#fff"}
                     />
                   ) : (
-                    <Image source={category.image} className="size-12" resizeMode="contain" />
+                    <Image
+                      source={category.image}
+                      className="size-12"
+                      resizeMode="contain"
+                    />
                   )}
+                  {/* Category Name */}
+                  <Text
+                    className={`mt-2 text-sm font-medium ${
+                      isSelected ? "text-text-primary" : "text-text-secondary"
+                    }`}
+                  >
+                    {category.name}
+                  </Text>
                 </TouchableOpacity>
               );
             })}
           </ScrollView>
         </View>
 
-       
-
         <View className="px-6 mb-6">
           <View className="flex-row items-center justify-between mb-4">
-            <Text className="text-text-primary text-lg font-bold">Products</Text>
-            <Text className="text-text-secondary text-sm">{filteredProducts.length} items</Text>
+            <Text className="text-text-primary text-lg font-bold">
+              Products
+            </Text>
+            <Text className="text-text-secondary text-sm">
+              {filteredProducts.length} items
+            </Text>
           </View>
 
           {/* PRODUCTS GRID */}
-          <ProductsGrid products={filteredProducts} isLoading={isLoading} isError={isError} />
+          <ProductsGrid
+            products={filteredProducts}
+            isLoading={isLoading}
+            isError={isError}
+          />
         </View>
       </ScrollView>
     </SafeScreen>

@@ -8,6 +8,7 @@ import CustomersPage from "./pages/CustomersPage";
 import DashboardLayout from "./layouts/DashboardLayout";
 
 import PageLoader from "./components/PageLoader";
+import CategoryPage from "./pages/CategoryPage";
 
 function App() {
   const { isSignedIn, isLoaded } = useAuth();
@@ -22,6 +23,7 @@ function App() {
         <Route index element={<Navigate to={"dashboard"} />} />
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="products" element={<ProductsPage />} />
+        <Route path="categories" element={<CategoryPage />} />
         <Route path="orders" element={<OrdersPage />} />
         <Route path="customers" element={<CustomersPage />} />
       </Route>

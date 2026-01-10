@@ -66,6 +66,10 @@ const queryClient = new QueryClient({
   }),
 });
 
+// mobile/app/_layout.tsx
+export const unstable_settings = {
+  initialRouteName: "index",
+};
 
 export default Sentry.wrap(function RootLayout() {
   return (

@@ -253,7 +253,7 @@ const CartScreen = () => {
 
       <View
         className="absolute bottom-0 left-0 right-0 bg-background/95 backdrop-blur-xl border-t
-       border-surface pt-4 pb-32 px-6"
+       border-surface pt-4  px-6"
       >
         {/* Quick Stats */}
         <View className="flex-row items-center justify-between mb-4">
